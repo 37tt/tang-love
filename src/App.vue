@@ -59,6 +59,22 @@ const noButtonText = computed(() => {
   return noTexts[clickCount.value][0];
 });
 
+const yesText = computed(() => {
+  const params = new URLSearchParams(window.location.search);
+  const username = params.get("name");
+
+  // 限制用户名长度，避免页面样式崩坏
+  const maxLength = 20;
+  const safeUsername = username ? username.substring(0, maxLength) : "???";
+
+  // 防止 `null` 变成 `"null"`
+  if (username) {
+    questionText.innerText = questionText.innerText + safeUsername;
+  }
+
+  return `!!!喜欢你!! ( >᎑<)♡︎ᐝ  ${username ? `${safeUsername}  ♡︎ᐝ(>᎑< )` : ""}`;
+});
+
 // No 按钮点击事件
 function onNoClick() {
   clickCount.value++;
@@ -80,7 +96,7 @@ function onYesClick() {
     </div>
   </div>
   <div v-else class="yes-screen">
-    <h1 class="yes-text">!!!喜欢你!! ( >᎑<)♡︎ᐝ</h1>
+    <h1 class="yes-text">{{ yesText }}</h1>
     <img :src="yesImageSrc" class="yes-image" />
   </div>
 </template>
