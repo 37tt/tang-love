@@ -13,6 +13,8 @@ const yesButtonDefaultText = "可以";
 const noButtonDefaultText = "不要";
 // 表白文本（固定）
 const yesText = ref("!!!喜欢你!! ( >᎑<)♡︎ᐝ");
+// 表白图片路径
+const yesImageSrc = ref("images/hug.png");
 
 const clickCount = ref(0);  // 记录点击 No 的次数
 
@@ -73,14 +75,14 @@ function onYesClick() {
 <template>
   <div v-if="!isSuccess" class="container">
     <img id="mainImage" :src="mainImageSrc" :style="mainImageStyle" />
-    <h1 id="question" :style="questionStyle">{{ questionText }}</h1>
-    <div class="buttons">
+    <h1 :style="questionStyle">{{ questionText }}</h1>
+    <div>
       <button id="yes" :style="yesButtonStyle" @click="onYesClick">{{ yesButtonDefaultText }}</button>
       <button id="no" :style="noButtonStyle" @click="onNoClick">{{ noButtonText }}</button>
     </div>
   </div>
   <div v-else class="yes-screen">
     <h1 class="yes-text">{{ yesText }}</h1>
-    <img :src="`images/hug.png`" class="yes-image" />
+    <img :src="yesImageSrc" class="yes-image" />
   </div>
 </template>
