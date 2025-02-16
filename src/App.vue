@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 
+const params = new URLSearchParams(window.location.search);
+const username = params.get("name");
+
+// 限制用户名长度，避免页面样式崩坏
+const maxLength = 20;
+const safeUsername = username ? username.substring(0, maxLength) : "???";
+
 // 表白图片路径
 const yesImageSrc = ref("images/hug.png");
 
@@ -30,7 +37,7 @@ const mainImageSrc = computed(() => {
 
 // 让 Yes 变大，每次放大 2 倍
 const yesButtonStyle = computed(() => {
-  if (clickCount.value <= 0){
+  if (clickCount.value <= 0) {
     return;
   }
 
@@ -41,7 +48,7 @@ const yesButtonStyle = computed(() => {
 });
 
 const noButtonStyle = computed(() => {
-  if (clickCount.value <= 0){
+  if (clickCount.value <= 0) {
     return;
   }
 
@@ -59,20 +66,22 @@ const noButtonText = computed(() => {
   return noTexts[clickCount.value][0];
 });
 
-const yesText = computed(() => {
-  const params = new URLSearchParams(window.location.search);
-  const username = params.get("name");
-
-  // 限制用户名长度，避免页面样式崩坏
-  const maxLength = 20;
-  const safeUsername = username ? username.substring(0, maxLength) : "???";
-
+const questionText = computed(() => {
   // 防止 `null` 变成 `"null"`
-  if (username) {
-    questionText.innerText = questionText.innerText + safeUsername;
+  if (!username) {
+    return "可以成为我的恋人吗？";
   }
 
-  return `!!!喜欢你!! ( >᎑<)♡︎ᐝ  ${username ? `${safeUsername}  ♡︎ᐝ(>᎑< )` : ""}`;
+  return `可以成为我的恋人吗？${safeUsername}`;
+});
+
+const yesText = computed(() => {
+  // 防止 `null` 变成 `"null"`
+  if (!username) {
+    return "!!!喜欢你!! ( >᎑<)♡︎ᐝ";
+  }
+
+  return `!!!喜欢你!! ( >᎑<)♡︎ᐝ  ${safeUsername}  ♡︎ᐝ(>᎑< )`;
 });
 
 // No 按钮点击事件
@@ -89,7 +98,7 @@ function onYesClick() {
 <template>
   <div v-if="!isSuccess" class="container">
     <img id="mainImage" :src="mainImageSrc" />
-    <h1>可以成为我的恋人吗？</h1>
+    <h1>{{ questionText }}</h1>
     <div class="buttons">
       <button id="yes" :style="yesButtonStyle" @click="onYesClick">可以</button>
       <button id="no" :style="noButtonStyle" @click="onNoClick">{{ noButtonText }}</button>
