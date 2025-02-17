@@ -28,6 +28,7 @@ body {
 }
 
 #app {
+  position: fixed;
   width: 100dvw; /* 适应手机屏幕宽度 */
   height: 100dvh;
   display: flex;
@@ -128,5 +129,9 @@ button {
   .buttons {
     display: flex;
     flex-direction: column;
+  }
+
+  .license {
+    bottom: 2dvh;
   }
 }
