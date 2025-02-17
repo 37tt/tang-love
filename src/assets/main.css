@@ -94,6 +94,7 @@ button {
   position: fixed;
   bottom: 0;
   color: #a69195;
+  font-size: 2dvh;
 }
 
 .license a {
