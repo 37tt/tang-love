@@ -44,7 +44,7 @@ const yesButtonStyle = computed(() => {
   return {
     transform: `scale(${1 + clickCount.value * 1.2})`,
     margin: `${22 * (1 + clickCount.value * 1.2)}px ${36 * (1 + clickCount.value * 1.2)}px`
-  }
+  };
 });
 
 const noButtonStyle = computed(() => {
@@ -54,7 +54,7 @@ const noButtonStyle = computed(() => {
 
   return {
     transform: `scale(${1 - clickCount.value * 0.1})`
-  }
+  };
 });
 
 // No 文案变化（前 5 次变化）
@@ -107,5 +107,10 @@ function onYesClick() {
   <div v-else class="yes-screen">
     <h1 class="yes-text">{{ yesText }}</h1>
     <img :src="yesImageSrc" class="yes-image" />
+  </div>
+  <div class="license">
+    由<a href="https://www.douyin.com/user/MS4wLjABAAAAe0T2npKNPtRfu3yLhwnCWtJU5Agwb6WY9g_2mnqKfZM">汤汤好梦</a>绘制 |
+    根据<a href="https://mit-license.org">MIT许可证</a>授权 |
+    <a href="https://github.com/37tt/tang-love">源码仓库</a>
   </div>
 </template>

@@ -89,6 +89,17 @@ button {
   max-width: 300px; /* 最大宽度限制 */
 }
 
+.license {
+  position: fixed;
+  bottom: 0;
+  color: #a69195;
+}
+
+.license a {
+  color: #a69195;
+  text-decoration: none;
+}
+
 /* 电脑端样式优化 */
 @media (min-width: 768px) {
   #mainImage {
