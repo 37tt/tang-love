@@ -1,3 +1,7 @@
+html, body {
+    overflow: hidden;
+}
+
 body {
     background-color: #f1d5da; /* 浅粉色 */
     text-align: center;
