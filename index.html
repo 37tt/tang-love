@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>可以成为我的恋人吗？</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <img id="mainImage" src="images/heart.png" alt="爱心">
-        <h1 id="question">可以成为我的恋人吗？</h1>
-        <div class="buttons">
-            <button id="yes">可以</button>
-            <button id="no">不要</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我爱你马彤</title>
+<style>
+body{margin:0;height:100vh;background:radial-gradient(circle,#3a0d2a,#0a0008);overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:sans-serif}
+h1{color:#fff;font-size:13vw;text-shadow:0 0 20px #ff2e6b;margin:0 0 5vh}
+h1 span{opacity:0;display:inline-block;transform:translateY(20px) scale(.4);animation:i .7s forwards}
+@keyframes i{to{opacity:1;transform:none}}
+.h{width:50vw;max-width:240px;opacity:0;transform:scale(0)}
+.h.s{animation:p .9s forwards}
+@keyframes p{60%{opacity:1;transform:scale(1.15)}100%{opacity:1;transform:scale(1)}}
+.h.s svg{animation:b 1.3s .9s infinite}
+@keyframes b{20%{transform:scale(1.12)}35%{transform:scale(.97)}50%{transform:scale(1.08)}}
+</style></head><body>
+<h1 id="t"></h1>
+<div class="h" id="h"><svg viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8ab8"/><stop offset="1" stop-color="#c9003f"/></linearGradient></defs><path fill="url(#g)" d="M50 88 C50 88 8 60 8 34 C8 18 20 8 33 8 C42 8 48 13 50 19 C52 13 58 8 67 8 C80 8 92 18 92 34 C92 60 50 88 50 88Z"/></svg></div>
+<script>
+var s="我爱你马彤",t=document.getElementById('t'),h=document.getElementById('h');
+for(var i=0;i<s.length;i++){var e=document.createElement('span');e.textContent=s[i];e.style.animationDelay=(i*.28)+'s';t.appendChild(e)}
+setTimeout(function(){h.classList.add('s')},s.length*280+500);
+document.onclick=function(){location.reload()};
+</script></body></html>
